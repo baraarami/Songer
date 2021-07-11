@@ -1,0 +1,34 @@
+.flex-container{
+    display: flex;
+    flex-direction: column;
+    /* background-color: rgb(150, 20, 48); */
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.album{
+    color: rgb(21, 20, 22);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: inset 5px;
+    height: 400px;
+    width: 50%;
+    background-color: rgb(90, 11, 73);
+}
+p{
+    color: aliceblue;
+    font-weight: bolder;
+}
+h1{
+    text-align: center;
+    color: aliceblue;
+    border-radius: 20px;
+    background-color: rgb(95, 2, 49);
+}
+img{
+    height: 250px;
+    width: 200px;
+}
