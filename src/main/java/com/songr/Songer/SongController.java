@@ -1,39 +1,52 @@
-package com.songr.Songer;
+package com.Spring.Spring;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 
 @Controller
 public class SongController {
+    @Autowired
+    AlbumRepository albumRepository;
 
     @GetMapping("/hello")
     public String home(){
         return "HelloWorld";
     }
 
-    @GetMapping("/capitalize/{word}")
-    public String anyWord(Model m ,@PathVariable("word")String word ){
+@GetMapping("/capitalized/{word}")
+    public String anyWord(Model m , @PathVariable("word") String word){
         m.addAttribute("word" , word.toUpperCase());
-
         return "CAPITALIZED";
-    }
+}
 
-    @GetMapping("/albums")
+@GetMapping ("/Album")
     public String getAlbum(Model m){
-        Album album1 = new Album("Without Me", "Without Me Halsey", 3 , 300 , "https://1.bp.blogspot.com/--HttxjSIPBQ/W-AuaqH-kHI/AAAAAAAAF2I/OiGiMkIhnTgz2JJlbMuKKIJfjJiUPnAIwCLcBGAs/s1600/1.jpg");
-        Album album2 = new Album("Confident", "Justin Bieber", 10 , 600 , "http://upload.wikimedia.org/wikipedia/en/b/bb/Confident-Justin-Bieber-Chance-The-Rapper.jpg");
-        Album album3 = new Album("It's You", "Ali Gatie", 20 , 400, "https://tse1.mm.bing.net/th?id=OIP.txMrPyHss9LH95rc5llFEgHaEK&pid=Api&P=0&w=295&h=167.jpg");
-        List<Album> albums = new ArrayList<>();
-        albums.add(album1);
-        albums.add(album2);
-        albums.add(album3);
-
-        m.addAttribute("albums" , albums);
+        m.addAttribute("album" , albumRepository.findAll());
         return "Album";
-    }
+}
+
+@GetMapping ("/AddAlbum")
+    public String getAddAlbumView(){
+        return "AddAlbum";
+}
+
+@PostMapping("/Album")
+public RedirectView addAlbum(@RequestParam(value = "title") String title ,
+                             @RequestParam(value = "artist")String artist ,
+                             @RequestParam(value = "songCount")int songCount ,
+                             @RequestParam(value = "length")int length ,
+                             @RequestParam(value = "imgUrl")String imgUrl ){
+        Album album= new Album(title , artist , songCount, length , imgUrl);
+        albumRepository.save(album);
+        return new RedirectView("/album");
+}
+
+
+
 }

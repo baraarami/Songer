@@ -1,24 +1,33 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" th:href="@{/style.css}" >
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
 
     <title>Song</title>
 </head>
 <body>
-    <h1>Welcome to the Albums page !</h1>
-    <div class="flex-container">
-        <div class="album" th:each="album : ${albums}">
-            <p>Album Title : <span th:text=${album.title}></span> </p>
-            <p>Artist : <span th:text=${album.artist}></span></p>
-            <p>Album Song Count : <span th:text=${album.songCount}></span></p>
-            <p>Album Length :<span th:text=${album.length}></span></p>
-            <img  th:src=${album.imgUrl} th:alt="${album.title}">
-        </div>
+<div class="topNav">
+    <a class="active" href="/">Home</a>
+    <a href="/Album">Albums</a>
+    <a href="/AddAlbum">Add Album</a>
+</div>
+
+<h1>Welcome to the Albums page !</h1>
+
+<div class="flex-container">
+    <div class="album" th:each="album : ${album}">
+        <p>Album Title : <span th:text= ${album.title}}></span> </p>
+        <p>Artist : <span th:text=${album.artist}></span></p>
+        <p>Album Song Count : <span th:text=${album.socngCount}></span></p>
+        <p>Album Length :<span th:text=${album.length}></span></p>
+        <img  th:src= "${album.imgUrl}"th:alt="${album.title}"">
     </div>
+</div>
 </body>
 </html>
