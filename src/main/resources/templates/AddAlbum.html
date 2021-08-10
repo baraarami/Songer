@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-
 <head>
     <meta charset="UTF-8">
-
-    <link rel="stylesheet" href="style.css">
-
-    <title>Albums</title>
+    <link rel="stylesheet" th:href="@{/styles/style.css}"
+          href="../static/styles/style.css">
+    <title>Add Album</title>
 </head>
 <body>
-<h3>Add A new Album </h3>
+<h3> Add Album</h3>
+
 <form action="/albums" method="post">
     <label>Title</label>
     <input type="text" name="title"/>
@@ -18,17 +17,14 @@
     <input type="text" name="artist"/>
 
     <label>Song Count</label>
-    <input type="number" name="songCount"/>
+    <input type="text" name="songCount"/>
 
-    <label>Length</label>
-    <input type="number" name="length"/>
+    <label>length</label>
+    <input type="text" name="length"/>
 
     <label>Album Cover</label>
-    <input type="text" name="imgUrl"/>
-
-    <input type="submit" value="Add Album">
-
-
+    <input type="text" name="imageUrl"/>
+    <input type="submit" name="add album"/>
 
 </form>
 </body>

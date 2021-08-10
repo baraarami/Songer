@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/styles/style.css}"
+          href="../static/styles/style.css">
+    <title>Add new Song</title>
+</head>
+<body>
+
+<h3>Add a new Song</h3>
+<form action="/songs" method="post">
+    <label>Title</label>
+    <input type="text" name="title">
+
+    <label>Track Number</label>
+    <input type="number" name="trackNumber">
+
+    <label>length</label>
+    <input type="number" name="length">
+
+    <label>Album Id</label>
+    <input type="number" name="albumId">
+    <input type="submit" value="add song">
+</form>
+</body>
+</html>

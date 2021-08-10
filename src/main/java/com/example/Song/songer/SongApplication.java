@@ -1,13 +1,13 @@
-package com.Spring.Spring;
+package com.example.Song.songer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class SongApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Application.class, args);
+		SpringApplication.run(SongApplication.class, args);
 	}
 
 }
